@@ -1,0 +1,71 @@
+version: 2.1
+jobs:
+  build:
+
+    docker:
+      - image: cimg/openjdk:17.0
+
+
+
+    working_directory: ~/repo
+
+    resource_class: medium
+    environment:
+
+      TERM: dumb
+
+    steps:
+      - checkout
+
+      - run:
+          name: Build
+          command: ./gradlew clean build --no-daemon --stacktrace -x dependencyCheckAggregate
+  owasp:
+    docker:
+      - image: cimg/openjdk:17.0
+
+    working_directory: ~/repo
+
+    resource_class: medium
+    environment:
+
+      TERM: dumb
+    steps:
+      - checkout
+      - run:
+          name: Run owasp plugin
+          command: ./gradlew dependencyCheckAggregate --no-daemon --stacktrace
+
+      - store_artifacts:
+          name: Store OWASP Dependency-Check reports
+          path: build/reports
+  package:
+    docker:
+      - image: cimg/openjdk:17.0
+
+    working_directory: ~/repo
+
+    resource_class: medium
+    environment:
+
+      TERM: dumb
+    steps:
+      - checkout
+      - run:
+          name: package jar
+          command: ./gradlew shadowJar
+
+
+workflows:
+  build:
+    jobs:
+      - build
+      - owasp
+      - package:
+          requires:
+            - build
+            - owasp
+          filters:
+            branches:
+              only:
+                - master
