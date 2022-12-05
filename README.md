@@ -15,7 +15,10 @@ run the gradle command `./gradlew shadowJar` to build the fat jar. Then run `jav
 
 Run the gradle command `./gradlew run --args='<inputpath> <outputdirectory> <type>' `. Current supported filetypes are XML and CSV. 
 
-Run the gradle command `./gradlew dependencyCheckAnalyze` to verify if there are any vulnerabilities in the dependencies. 
+### OWASP
+
+- Run the gradle command `./gradlew dependencyCheckAnalyze` to verify if there are any vulnerabilities in the dependencies. 
+- You can review the dependency report in build/reports locally and under the following link in circleCI: https://app.circleci.com/pipelines/github/daniel-jacob-test-organization/customer-statement-processor/1/workflows/f1644ded-738b-4eb5-867a-3e9e28340af0/jobs/1/artifacts
 
 
 ### Technical choices
@@ -28,7 +31,7 @@ Run the gradle command `./gradlew dependencyCheckAnalyze` to verify if there are
 
 - The scope of the application was to build an application that processes customer statements. These statements are put on a path on a server. The party that uses the software would start this tool to process the statements. It seems therefore most logical to build a command line application that takes a path and a filetype and processes the file for that type. 
 - The delivered file is syntactically correct
-- CI pipeline can be found on https://app.circleci.com/pipelines/github/Daniel-Jacob/customer-statement-processor/
+- CI pipeline can be found on https://app.circleci.com/pipelines/github/daniel-jacob-test-organization/customer-statement-processor
 - Currently only XML and CSV are supported but in the future other formats might be added. I have used an interface here to ensure only a new implementation needs to be added. The same goes for the validations. 
 - The transaction reference is the only thing that needs to be unique and no plans in the future to change that. Therefore, we only store the reference to verify if the reference is duplicate saving overhead in memory for the current implementation which stores the references in memory. 
 
