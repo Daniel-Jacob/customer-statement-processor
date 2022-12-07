@@ -1,7 +1,6 @@
 package nl.rabobank.customer.statement.adapters.xml
 
 import nl.rabobank.customer.statement.domain.CustomerStatement
-import nl.rabobank.customer.statement.adapters.xml.XmlCustomerStatementAdapter
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.io.File

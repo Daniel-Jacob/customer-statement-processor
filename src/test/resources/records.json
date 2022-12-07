@@ -1,0 +1,82 @@
+[
+  {
+    "reference" : "183398",
+    "accountNumber": "NL56RABO0149876948",
+    "description": "Clothes from Richard de Vries",
+    "startBalance": 33.34,
+    "mutation": "+5.55",
+    "endBalance": 38.89
+  },
+  {
+    "reference" : "183399",
+    "accountNumber": "NL56RABO0149876948",
+    "description": "Clothes from Richard de Vries",
+    "startBalance": 33.34,
+    "mutation": "+5.55",
+    "endBalance": 38.89
+  },
+  {
+    "reference" : "183340",
+    "accountNumber": "NL56RABO0149876948",
+    "description": "Clothes from Richard de Vries",
+    "startBalance": 33.34,
+    "mutation": "+5.55",
+    "endBalance": 38.89
+  },
+  {
+    "reference" : "183355",
+    "accountNumber": "NL56RABO0149876948",
+    "description": "Clothes from Richard de Vries",
+    "startBalance": 33.34,
+    "mutation": "+5.55",
+    "endBalance": 38.89
+  },
+  {
+    "reference" : "18366",
+    "accountNumber": "NL56RABO0149876948",
+    "description": "Clothes from Richard de Vries",
+    "startBalance": 33.34,
+    "mutation": "+5.55",
+    "endBalance": 38.89
+  },
+  {
+    "reference" : "183377",
+    "accountNumber": "NL56RABO0149876948",
+    "description": "Clothes from Richard de Vries",
+    "startBalance": 33.34,
+    "mutation": "+5.55",
+    "endBalance": 38.89
+  },
+  {
+    "reference" : "183388",
+    "accountNumber": "NL56RABO0149876948",
+    "description": "Clothes from Richard de Vries",
+    "startBalance": 33.34,
+    "mutation": "+5.55",
+    "endBalance": 38.89
+  },
+  {
+    "reference" : "183399",
+    "accountNumber": "NL56RABO0149876948",
+    "description": "Clothes from Richard de Vries",
+    "startBalance": 33.34,
+    "mutation": "+5.55",
+    "endBalance": 38.89
+  },
+  {
+    "reference" : "183590",
+    "accountNumber": "NL56RABO0149876948",
+    "description": "Clothes from Richard de Vries",
+    "startBalance": 33.34,
+    "mutation": "+5.55",
+    "endBalance": 38.89
+  },
+  {
+    "reference" : "183111",
+    "accountNumber": "NL56RABO0149876948",
+    "description": "Clothes from Richard de Vries",
+    "startBalance": 33.34,
+    "mutation": "+5.55",
+    "endBalance": 38.89
+  }
+]

@@ -1,8 +1,6 @@
 package nl.rabobank.customer.statement.adapters.csv
 
 import nl.rabobank.customer.statement.adapters.CustomerStatementInputType
-import nl.rabobank.customer.statement.adapters.csv.CsvCustomerStatement
-import nl.rabobank.customer.statement.adapters.csv.CsvCustomerStatementAdapter
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.io.File

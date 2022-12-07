@@ -3,7 +3,6 @@ package nl.rabobank.customer.statement.domain.service
 import nl.rabobank.customer.statement.domain.CustomerStatement
 import nl.rabobank.customer.statement.validators.EndBalanceValidator
 import nl.rabobank.customer.statement.validators.UniqueReferenceValidator
-import nl.rabobank.customer.statement.domain.service.ValidationService
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.math.BigDecimal

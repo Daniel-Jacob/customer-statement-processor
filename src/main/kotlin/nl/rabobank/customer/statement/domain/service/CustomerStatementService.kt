@@ -2,6 +2,7 @@ package nl.rabobank.customer.statement.domain.service
 
 import nl.rabobank.customer.statement.adapters.CustomerStatementInputType
 import nl.rabobank.customer.statement.adapters.csv.CsvCustomerStatementAdapter
+import nl.rabobank.customer.statement.adapters.json.JsonCustomerStatementAdapter
 import nl.rabobank.customer.statement.adapters.xml.XmlCustomerStatementAdapter
 import nl.rabobank.customer.statement.domain.error.ErrorHandler
 import nl.rabobank.customer.statement.validators.EndBalanceValidator
@@ -12,8 +13,19 @@ import java.nio.file.Path
 import java.nio.file.Paths
 
 class CustomerStatementService(
-    private val validationService: ValidationService = ValidationService(listOf(EndBalanceValidator(), UniqueReferenceValidator())),
-    private val converterService: ConverterService = ConverterService(listOf(XmlCustomerStatementAdapter(), CsvCustomerStatementAdapter()))
+    private val validationService: ValidationService = ValidationService(
+        listOf(
+            EndBalanceValidator(),
+            UniqueReferenceValidator()
+        )
+    ),
+    private val converterService: ConverterService = ConverterService(
+        listOf(
+            XmlCustomerStatementAdapter(),
+            CsvCustomerStatementAdapter(),
+            JsonCustomerStatementAdapter()
+        )
+    )
 ) {
 
     fun processCustomerStatements(inputFile: String, outputDir: String, type: CustomerStatementInputType): Path {
@@ -23,8 +35,12 @@ class CustomerStatementService(
         }
 
         return File(inputFile).inputStream()
-            .use { converterService.getConverterForType(type).convert(it) }
-            .flatMap { customerStatement -> validationService.validate(customerStatement) }
-            .let { ErrorHandler.handleErrors(it, outputDir) }
+            .use { inputStream ->
+                converterService.getConverterForType(type).convert(inputStream)
+                    .flatMap { customerStatement ->
+                        validationService.validate(customerStatement)
+                    }
+                    .let { ErrorHandler.handleErrors(it, outputDir) }
+            }
     }
 }
