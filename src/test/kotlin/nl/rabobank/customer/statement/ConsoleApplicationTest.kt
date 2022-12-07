@@ -1,6 +1,5 @@
 package nl.rabobank.customer.statement
 
-import nl.rabobank.customer.statement.ConsoleApplication
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -13,6 +12,7 @@ internal class ConsoleApplicationTest {
         private const val outputFile = "build/tmp/test/"
         private const val inputXmlPath = "src/test/resources/records.xml"
         private const val inputCsvPath = "src/test/resources/records.csv"
+        private const val inputJsonPath = "src/test/resources/records.json"
     }
 
     @Test
@@ -32,6 +32,13 @@ internal class ConsoleApplicationTest {
         ConsoleApplication.main(arrayOf(inputXmlPath, outputFile, "XML"))
 
         assertTrue(Files.exists(outputPath))
+    }
+
+    @Test
+    fun `should process JSON`() {
+        ConsoleApplication.main(arrayOf(inputJsonPath, outputFile, "JSON"))
+        val outputPath = Path.of(outputFile)
+        assertTrue { Files.exists(outputPath) }
     }
 
     @Test

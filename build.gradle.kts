@@ -37,6 +37,9 @@ dependencies {
     implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.0")
     implementation("org.slf4j:slf4j-api:2.0.5")
     implementation("org.slf4j:slf4j-simple:2.0.5")
+    implementation("com.google.code.gson:gson:2.10")
+
+
     // force dependency version
     implementation("org.jetbrains.kotlin:kotlin-reflect") {
         version {

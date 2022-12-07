@@ -41,6 +41,14 @@ internal class EndBalanceValidatorTest {
         assertShouldAddErrorForEndBalance(start = BigDecimal(2.50), end = BigDecimal(2.50), mutationValue = "*5.00")
     }
 
+    @Test
+    fun `should match startBalance plus mutation to end balance with different scale`() {
+        val customerStatement = defaultCustomerStatement.copy(mutation = "+1.0", startBalance = BigDecimal(1.00), endBalance = BigDecimal(2.00))
+        val endBalanceValidator = EndBalanceValidator()
+
+        Assertions.assertTrue { endBalanceValidator.validate(customerStatement).isEmpty() }
+    }
+
     private fun assertShouldAddErrorForEndBalance(start: BigDecimal, end: BigDecimal, mutationValue: String) {
         val customerStatement = defaultCustomerStatement.copy(startBalance = start, endBalance = end, mutation = mutationValue)
 
