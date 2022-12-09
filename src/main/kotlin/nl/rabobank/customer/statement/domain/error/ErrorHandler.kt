@@ -15,12 +15,12 @@ class ErrorHandler(outputDir: String) : AutoCloseable {
     val generatedReportPath: Path = Paths.get(path.toString(), "report-${System.currentTimeMillis()}.csv")
 
     private val writer = CSVWriter(FileWriter(generatedReportPath.toFile()))
-    private val bean: StatefulBeanToCsv<CustomerStatementValidationError> = StatefulBeanToCsvBuilder<CustomerStatementValidationError>(writer).build()
+    private val statefulBeanToCsv: StatefulBeanToCsv<CustomerStatementValidationError> = StatefulBeanToCsvBuilder<CustomerStatementValidationError>(writer).build()
 
 
 
     fun handleErrors(errors: List<CustomerStatementValidationError>) {
-        bean.write(errors)
+        statefulBeanToCsv.write(errors)
 
     }
 
