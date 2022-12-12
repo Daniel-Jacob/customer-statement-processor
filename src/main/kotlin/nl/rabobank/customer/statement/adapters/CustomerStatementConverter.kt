@@ -4,7 +4,7 @@ import nl.rabobank.customer.statement.domain.CustomerStatement
 import java.io.InputStream
 
 enum class CustomerStatementInputType {
-    CSV, XML, UNKNOWN
+    UNKNOWN, CSV, XML, JSON
 }
 
 interface CustomerStatementConverter {

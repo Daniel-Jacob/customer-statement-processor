@@ -24,8 +24,8 @@ class EndBalanceValidator : Validator<CustomerStatement, CustomerStatementValida
         val mutationType = customerStatement.mutation.first()
         val amount = customerStatement.mutation.drop(1)
         return when (mutationType) {
-            '+' -> customerStatement.startBalance + BigDecimal(amount) != customerStatement.endBalance
-            '-' -> customerStatement.startBalance - BigDecimal(amount) != customerStatement.endBalance
+            '+' -> (customerStatement.startBalance + BigDecimal(amount)).compareTo(customerStatement.endBalance) != 0
+            '-' -> (customerStatement.startBalance - BigDecimal(amount)).compareTo(customerStatement.endBalance) != 0
             // also add an error if we get an unknown mutation type
             else -> true
         }

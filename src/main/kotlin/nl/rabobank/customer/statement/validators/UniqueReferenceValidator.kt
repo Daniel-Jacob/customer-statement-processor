@@ -6,18 +6,13 @@ class UniqueReferenceValidator : Validator<CustomerStatement, CustomerStatementV
     private val repository: MutableSet<String> = mutableSetOf()
 
     override fun validate(statement: CustomerStatement): List<CustomerStatementValidationError> {
-        val errors = mutableListOf<CustomerStatementValidationError>()
-        val duplicateReference = repository.contains(statement.reference)
-        if (duplicateReference) {
-            errors.add(
-                CustomerStatementValidationError(
-                    reference = statement.reference,
-                    description = statement.description,
-                    reason = "could not save customer reference since it already exists."
-                )
+        return if (repository.contains(statement.reference)) {
+            listOf(
+                CustomerStatementValidationError(reference = statement.reference, description = statement.description, reason = "could not save customer reference since it already exists.")
             )
-        } else repository.add(statement.reference)
-
-        return errors.toList()
+        } else {
+            repository.add(statement.reference)
+            emptyList()
+        }
     }
 }
