@@ -64,7 +64,7 @@ tasks.withType<KotlinCompile> {
 
 
 dependencyCheck {
-    failBuildOnCVSS = 1.0f
+    failBuildOnCVSS = 7.0f
     failOnError = true
 }
 
